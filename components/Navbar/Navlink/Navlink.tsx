@@ -14,6 +14,12 @@ const Navlink = () => {
       <Link href="/about">
         <li>About</li>
       </Link>
+      <Link href="/signup">
+        <li>Signup</li>
+      </Link>
+      <Link href="/login">
+        <li>Login</li>
+      </Link>
       <Link href="/logout">
         <li>Logout</li>
       </Link>
