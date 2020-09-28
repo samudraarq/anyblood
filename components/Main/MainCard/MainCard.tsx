@@ -2,12 +2,12 @@ import Link from "next/link";
 import React, { FunctionComponent } from "react";
 import styles from "./MainCard.module.css";
 
-type Props = {
+interface Props {
   bgColor: string;
   title: string;
   btnCta: string;
   link: string;
-};
+}
 
 const MainCard: FunctionComponent<Props> = ({
   bgColor,

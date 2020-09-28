@@ -1,0 +1,18 @@
+.footer {
+  background-color: #e9e7fc;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer > span {
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin-top: 1.6rem;
+}
+
+.logo > a {
+  margin: 0 2rem;
+}
