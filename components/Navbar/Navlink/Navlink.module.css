@@ -1,6 +1,5 @@
 .nav {
   display: flex;
-  flex-direction: row;
 }
 
 .nav li {
@@ -9,4 +8,9 @@
   font-weight: 500;
   list-style: none;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav li:hover {
+  color: #f95a2c;
 }

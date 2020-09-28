@@ -1,0 +1,41 @@
+.card {
+  padding: 2rem 3.5rem;
+  height: 25rem;
+  width: 47rem;
+
+  border: 2px solid #18191f;
+  border-radius: 1.6rem;
+  box-shadow: 0px 6px 0px 0px #18191f;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card > h2 {
+  font-size: 3.6rem;
+  font-weight: 700;
+}
+
+.card > button {
+  height: 3.6rem;
+  font-family: inherit;
+  font-size: 1.2rem;
+  font-weight: 800;
+  background: #ffbd12;
+  border: 2px solid #18191f;
+  box-shadow: 0px 2px 0px #18191f;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  outline: none;
+}
+
+.card > button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 5px 0px #18191f;
+}
+
+.card > button:active {
+  transform: translateY(1px);
+  box-shadow: 0px 1px 0px #18191f;
+}
