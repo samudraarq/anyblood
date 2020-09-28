@@ -1,13 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import { Lock, Mail } from "react-feather";
-import styles from "./SignupForm.module.css";
+import styles from "./SigninForm.module.css";
 
-const SignupForm = () => {
+const SiginForm = () => {
   return (
     <div className={styles.form}>
-      <h2>Sign Up</h2>
-      <p>Start helping other people by creating an account first.</p>
+      <h2>Login</h2>
+      <p>Please login to your account so you can help other people again.</p>
       <form action="">
         <div className={styles.inputContainer}>
           <span className={styles.icon}>
@@ -29,26 +29,16 @@ const SignupForm = () => {
             placeholder="Password"
           />
         </div>
-        <div className={styles.inputContainer}>
-          <span className={styles.icon}>
-            <Lock />
-          </span>
-          <input
-            className={styles.input}
-            type="password"
-            placeholder="Password Confirmation"
-          />
-        </div>
-        <button className={styles.button}>Sign up</button>
+        <button className={styles.button}>Sign in</button>
       </form>
       <p className={styles.account}>
-        Already have account?
-        <Link href="/login">
-          <span> Go here</span>
+        You are new?
+        <Link href="/signup">
+          <span> Create new</span>
         </Link>
       </p>
     </div>
   );
 };
 
-export default SignupForm;
+export default SiginForm;
