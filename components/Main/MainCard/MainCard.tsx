@@ -9,12 +9,7 @@ interface Props {
   link: string;
 }
 
-const MainCard: FunctionComponent<Props> = ({
-  bgColor,
-  title,
-  btnCta,
-  link,
-}) => {
+const MainCard: React.FC<Props> = ({ bgColor, title, btnCta, link }) => {
   return (
     <div className={styles.card} style={{ backgroundColor: bgColor }}>
       <h2>{title}</h2>
