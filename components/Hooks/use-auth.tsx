@@ -12,7 +12,7 @@ export function ProvideAuth({ children }) {
 
 interface AuthInterface {
   user: any;
-  sigin: (email: string, password: string) => Promise<firebase.User>;
+  signin: (email: string, password: string) => Promise<firebase.User>;
   signup: (email: string, password: string) => Promise<firebase.User>;
   signout: () => Promise<void>;
   sendPasswordResetEmail: (email: string) => Promise<boolean>;
