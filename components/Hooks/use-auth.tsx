@@ -11,8 +11,12 @@ export function ProvideAuth({ children }) {
 }
 
 interface AuthInterface {
+  user: any;
   sigin: (email: string, password: string) => Promise<firebase.User>;
   signup: (email: string, password: string) => Promise<firebase.User>;
+  signout: () => Promise<void>;
+  sendPasswordResetEmail: (email: string) => Promise<boolean>;
+  confirmPasswordReset: (code: string, password: string) => Promise<boolean>;
 }
 // Hook for child components to get the auth object ...
 // ... and re-render when it changes.

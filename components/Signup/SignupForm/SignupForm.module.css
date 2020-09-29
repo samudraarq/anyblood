@@ -72,3 +72,11 @@
   color: #f95a2c;
   cursor: pointer;
 }
+
+.alert {
+  color: #f95a2c;
+  padding-left: 2rem;
+  margin-top: -2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
