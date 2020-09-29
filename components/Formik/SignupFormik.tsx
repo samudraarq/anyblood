@@ -1,17 +1,17 @@
 import React from "react";
 import { Lock, Mail } from "react-feather";
-import { useFormik } from "formik";
+import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
 import styles from "./Formik.module.css";
 
-const SignupFormik = ({ handleSubmit }) => {
-  const formik = useFormik({
-    initialValues: {
+const SignupFormik = ({ handleSubmit }) => (
+  <Formik
+    initialValues={{
       email: "",
       password: "",
       confPassword: "",
-    },
-    validationSchema: Yup.object({
+    }}
+    validationSchema={Yup.object({
       email: Yup.string().email("Invalid email address").required("Required"),
       password: Yup.string()
         .min(6, "Password must be >6 characters")
@@ -20,63 +20,62 @@ const SignupFormik = ({ handleSubmit }) => {
         .oneOf([Yup.ref("password"), null], "Passwords must match")
         .min(6, "Password must be >6 characters")
         .required("Required"),
-    }),
-    onSubmit: ({ email, password, confPassword }) => {
+    })}
+    onSubmit={({ email, password, confPassword }) => {
       handleSubmit(email, password, confPassword);
-    },
-  });
-  return (
-    <form onSubmit={formik.handleSubmit}>
+    }}
+  >
+    <Form>
       <div className={styles.inputContainer}>
         <span className={styles.icon}>
           <Mail />
         </span>
-        <input
-          className={styles.input}
-          id="email"
-          type="email"
-          {...formik.getFieldProps("email")}
+        <Field
+          name="email"
+          type="text"
           placeholder="Email Address"
+          className={styles.input}
         />
       </div>
-      {formik.touched.email && formik.errors.email ? (
-        <div className={styles.alert}>{formik.errors.email}</div>
-      ) : null}
+      <ErrorMessage name="email">
+        {(msg) => <div className={styles.alert}>{msg}</div>}
+      </ErrorMessage>
+
       <div className={styles.inputContainer}>
         <span className={styles.icon}>
           <Lock />
         </span>
-        <input
-          className={styles.input}
-          id="password"
+        <Field
+          name="password"
           type="password"
-          {...formik.getFieldProps("password")}
           placeholder="Password"
+          className={styles.input}
         />
       </div>
-      {formik.touched.password && formik.errors.password ? (
-        <div className={styles.alert}>{formik.errors.password}</div>
-      ) : null}
+      <ErrorMessage name="password">
+        {(msg) => <div className={styles.alert}>{msg}</div>}
+      </ErrorMessage>
+
       <div className={styles.inputContainer}>
         <span className={styles.icon}>
           <Lock />
         </span>
-        <input
-          className={styles.input}
-          id="confPassword"
+        <Field
+          name="confPassword"
           type="password"
-          {...formik.getFieldProps("confPassword")}
           placeholder="Password Confirmation"
+          className={styles.input}
         />
       </div>
-      {formik.touched.confPassword && formik.errors.confPassword ? (
-        <div className={styles.alert}>{formik.errors.confPassword}</div>
-      ) : null}
+      <ErrorMessage name="confPassword">
+        {(msg) => <div className={styles.alert}>{msg}</div>}
+      </ErrorMessage>
+
       <button type="submit" className={styles.button}>
         Submit
       </button>
-    </form>
-  );
-};
+    </Form>
+  </Formik>
+);
 
 export default SignupFormik;

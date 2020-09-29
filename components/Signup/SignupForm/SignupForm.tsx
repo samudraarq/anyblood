@@ -7,6 +7,7 @@ import SignupFormik from "../../Formik/SignupFormik";
 
 const SignupForm = () => {
   const [signupError, setSignupError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const auth = useAuth();
   const router = useRouter();
@@ -23,7 +24,10 @@ const SignupForm = () => {
           setSignupError(false);
           router.push("/");
         })
-        .catch((err) => setSignupError(true));
+        .catch((err) => {
+          setSignupError(true);
+          setErrorMsg(err.message);
+        });
     }
   };
 
@@ -32,7 +36,7 @@ const SignupForm = () => {
       <h2>Sign Up</h2>
       <p>Start helping other people by creating an account first.</p>
       <SignupFormik handleSubmit={handleSubmit} />
-      {signupError && <p>Can't signup</p>}
+      {signupError && <p className={styles.error}>{errorMsg}</p>}
       <p className={styles.account}>
         Already have account?
         <Link href="/login">

@@ -7,6 +7,8 @@ import SigninFormik from "../../Formik/SigninFormik";
 
 const SigninForm = () => {
   const [loginError, setLoginError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
   const auth = useAuth();
   const router = useRouter();
 
@@ -17,7 +19,10 @@ const SigninForm = () => {
         setLoginError(false);
         router.push("/");
       })
-      .catch((err) => setLoginError(true));
+      .catch((err) => {
+        setLoginError(true);
+        setErrorMsg(err.message);
+      });
   };
 
   return (
@@ -25,7 +30,7 @@ const SigninForm = () => {
       <h2>Login</h2>
       <p>Please login to your account so you can help other people again.</p>
       <SigninFormik handleSubmit={handleSubmit} />
-      {loginError && <p>Can't login</p>}
+      {loginError && <p className={styles.error}>{errorMsg}</p>}
       <p className={styles.account}>
         You are new?
         <Link href="/signup">

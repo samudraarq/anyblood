@@ -30,3 +30,8 @@
   margin-bottom: 1.5rem;
   font-size: 1.3rem;
 }
+
+.error {
+  color: #f95a2c;
+  margin-top: 1rem;
+}
