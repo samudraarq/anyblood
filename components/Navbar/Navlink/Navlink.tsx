@@ -4,22 +4,22 @@ import Link from "../../utils/Link";
 import styles from "./Navlink.module.css";
 
 const Navlink = () => {
-  const auth = useAuth();
+  const { user, signout } = useAuth();
 
   return (
     <ul className={styles.nav}>
       <Link href="/requests">
         <li>Request</li>
       </Link>
-      {auth.user && (
+      {user && (
         <>
           <Link href="/history">
             <li>History</li>
           </Link>
-          <li onClick={() => auth.signout()}>Logout</li>
+          <li onClick={() => signout()}>Logout</li>
         </>
       )}
-      {!auth.user && (
+      {!user && (
         <>
           <Link href="/signup">
             <li>Signup</li>
