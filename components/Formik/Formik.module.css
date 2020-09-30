@@ -27,6 +27,12 @@
   left: 1.5rem;
 }
 
+.textareaicon {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+}
+
 .input {
   width: 100%;
   height: 5.6rem;
@@ -79,4 +85,38 @@
   margin-top: -2rem;
   margin-bottom: 1.5rem;
   font-size: 1.3rem;
+}
+
+.textarea {
+  height: 15rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  resize: none;
+}
+
+.sendform {
+  width: 15rem;
+  height: 6rem;
+  background: #18191f;
+  border-radius: 16px;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 2.1rem;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+
+/* Remove number input arrow */
+/* Chrome, Safari, Edge, Opera */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.input[type="number"] {
+  -moz-appearance: textfield;
 }

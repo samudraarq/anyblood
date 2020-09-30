@@ -1,0 +1,16 @@
+.form > h2 {
+  font-size: 3.6rem;
+  font-weight: 800;
+  margin-bottom: 1.6rem;
+}
+
+.form > p {
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin-bottom: 2.4rem;
+}
+
+.form {
+  max-width: 45rem;
+  margin-bottom: 5rem;
+}
