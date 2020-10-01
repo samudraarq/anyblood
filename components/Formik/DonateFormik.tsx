@@ -17,6 +17,7 @@ const DonateFormik = ({ handleSubmit }) => {
         travelhistory: "",
         medicationhistory: "",
         place: "",
+        date: "",
       }}
       validationSchema={Yup.object({
         fullname: Yup.string().required("Required"),
@@ -27,6 +28,7 @@ const DonateFormik = ({ handleSubmit }) => {
         travelhistory: Yup.string(),
         medicationhistory: Yup.string(),
         place: Yup.string().required("Required"),
+        date: Yup.date().required("Required"),
       })}
       onSubmit={(val) => {
         handleSubmit(val);
@@ -149,7 +151,15 @@ const DonateFormik = ({ handleSubmit }) => {
         <ErrorMessage name="place">
           {(msg) => <div className={styles.alert}>{msg}</div>}
         </ErrorMessage>
-        <DatePicker name="date" />
+        <div className={styles.inputContainer}>
+          <span className={styles.icon}>
+            <User />
+          </span>
+          <DatePicker name="date" />
+        </div>
+        <ErrorMessage name="date">
+          {(msg) => <div className={styles.alert}>{msg}</div>}
+        </ErrorMessage>
         <button type="submit" className={styles.sendform}>
           <span>Send Form</span>
           <ChevronRight />

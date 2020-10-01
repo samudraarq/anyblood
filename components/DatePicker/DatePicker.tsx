@@ -7,7 +7,6 @@ import addDays from "date-fns/addDays";
 const DatePickerField = (props) => {
   const { setFieldValue } = useFormikContext();
   const [field] = useField(props);
-  console.log(field);
 
   return (
     <DatePicker
