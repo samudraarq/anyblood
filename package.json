@@ -12,6 +12,7 @@
     "formik": "^2.1.5",
     "next": "9.5.3",
     "react": "16.13.1",
+    "react-datepicker": "^3.2.2",
     "react-dom": "16.13.1",
     "react-feather": "^2.0.8",
     "yup": "^0.29.3"

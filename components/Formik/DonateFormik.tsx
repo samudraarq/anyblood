@@ -3,6 +3,7 @@ import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { ChevronRight, Lock, User } from "react-feather";
 import styles from "./Formik.module.css";
+import DatePicker from "../DatePicker/DatePicker";
 
 const DonateFormik = ({ handleSubmit }) => {
   return (
@@ -148,6 +149,7 @@ const DonateFormik = ({ handleSubmit }) => {
         <ErrorMessage name="place">
           {(msg) => <div className={styles.alert}>{msg}</div>}
         </ErrorMessage>
+        <DatePicker name="date" />
         <button type="submit" className={styles.sendform}>
           <span>Send Form</span>
           <ChevronRight />
