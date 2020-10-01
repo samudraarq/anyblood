@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import DonateFormik from "../Formik/DonateFormik";
 import styles from "./Donate.module.css";
-import { firestore } from "../../config/fbConfig";
+import { db } from "../../config/fbConfig";
 import { useAuth } from "../Hooks/use-auth";
 import firebase from "../../config/fbConfig";
 
@@ -12,8 +12,7 @@ const Donate = () => {
     const uid = user.uid;
     const newData = { uid, ...e };
 
-    firestore
-      .collection("users")
+    db.collection("users")
       .doc(uid)
       .update({
         donate: firebase.firestore.FieldValue.arrayUnion(newData),

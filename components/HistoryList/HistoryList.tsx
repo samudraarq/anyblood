@@ -1,0 +1,43 @@
+import React, { useEffect, useState } from "react";
+import { db } from "../../config/fbConfig";
+import { useAuth } from "../Hooks/use-auth";
+import { format } from "date-fns";
+
+const HistoryList = () => {
+  const [histories, setHistories] = useState([]);
+
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      db.collection("users")
+        .doc(user.uid)
+        .get()
+        .then(function (doc) {
+          if (doc.exists) {
+            console.log("Document data:", doc.data());
+            const data = doc.data();
+            console.log(data.donate);
+            setHistories(data.donate);
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+        })
+        .catch(function (error) {
+          console.log("Error getting document:", error);
+        });
+    }
+  }, [user]);
+
+  const historiesList = histories.map((history, idx) => (
+    <div key={idx}>
+      <p>{history.fullname}</p>
+      <p>{format(history.date.toDate(), "E, MM/dd/yyyy")}</p>
+    </div>
+  ));
+
+  return <div>{historiesList}</div>;
+};
+
+export default HistoryList;
