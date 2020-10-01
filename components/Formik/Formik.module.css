@@ -1,3 +1,7 @@
+.form {
+  max-width: 45rem;
+}
+
 .form > h2 {
   font-size: 3.6rem;
   font-weight: 800;
@@ -8,10 +12,6 @@
   font-size: 1.7rem;
   font-weight: 500;
   margin-bottom: 4.8rem;
-}
-
-.form {
-  max-width: 45rem;
 }
 
 .inputContainer {
@@ -95,9 +95,10 @@
 }
 
 .sendform {
-  width: 15rem;
+  width: 33rem;
   height: 6rem;
   background: #18191f;
+  border: none;
   border-radius: 16px;
   font-family: inherit;
   font-weight: 800;
@@ -106,6 +107,16 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.sendform > span {
+  margin-right: 1rem;
+  transform: translateY(-1px);
 }
 
 /* Remove number input arrow */

@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Lock, User } from "react-feather";
+import { ChevronRight, Lock, User } from "react-feather";
 import styles from "./Formik.module.css";
 
 const DonateFormik = ({ handleSubmit }) => {
@@ -149,7 +149,8 @@ const DonateFormik = ({ handleSubmit }) => {
           {(msg) => <div className={styles.alert}>{msg}</div>}
         </ErrorMessage>
         <button type="submit" className={styles.sendform}>
-          Send Form
+          <span>Send Form</span>
+          <ChevronRight />
         </button>
       </Form>
     </Formik>
