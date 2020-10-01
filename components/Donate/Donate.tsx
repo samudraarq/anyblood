@@ -3,6 +3,7 @@ import DonateFormik from "../Formik/DonateFormik";
 import styles from "./Donate.module.css";
 import { firestore } from "../../config/fbConfig";
 import { useAuth } from "../Hooks/use-auth";
+import firebase from "../../config/fbConfig";
 
 const Donate = () => {
   const { user } = useAuth();
@@ -12,15 +13,18 @@ const Donate = () => {
     const newData = { uid, ...e };
 
     firestore
-      .collection("donate")
-      .add({
-        ...newData,
+      .collection("users")
+      .doc(uid)
+      .update({
+        donate: firebase.firestore.FieldValue.arrayUnion(newData),
       })
       .then(function (docRef) {
         // go to success page
+        console.log("success");
       })
       .catch(function (error) {
         // display error
+        console.log(error);
       });
   };
 
