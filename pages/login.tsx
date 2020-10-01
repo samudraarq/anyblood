@@ -1,14 +1,14 @@
 import React from "react";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
-import Sigin from "../components/Signin/Signin";
+import Signin from "../components/Signin/Signin";
 
 const signin = () => {
   return (
     <>
       <div className="container">
         <Navbar />
-        <Sigin />
+        <Signin />
       </div>
       <Footer />
     </>
