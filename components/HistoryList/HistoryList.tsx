@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../config/fbConfig";
 import { useAuth } from "../Hooks/use-auth";
 import { format } from "date-fns";
+import styles from "./HistoryList.module.css";
 
 const HistoryList = () => {
   const [histories, setHistories] = useState([]);
@@ -31,8 +32,8 @@ const HistoryList = () => {
   }, [user]);
 
   const historiesList = histories.map((history, idx) => (
-    <div key={idx}>
-      <p>{history.fullname}</p>
+    <div key={idx} className={styles.listContainer}>
+      <p>{history.place}</p>
       <p>{format(history.date.toDate(), "E, MM/dd/yyyy")}</p>
     </div>
   ));
