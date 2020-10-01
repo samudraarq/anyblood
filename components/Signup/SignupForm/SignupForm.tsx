@@ -4,6 +4,7 @@ import styles from "./SignupForm.module.css";
 import { useAuth } from "../../Hooks/use-auth";
 import { useRouter } from "next/router";
 import SignupFormik from "../../Formik/SignupFormik";
+import { firestore } from "../../../config/fbConfig";
 
 const SignupForm = () => {
   const [signupError, setSignupError] = useState(false);
@@ -23,6 +24,14 @@ const SignupForm = () => {
         .then((res) => {
           setSignupError(false);
           router.push("/");
+          firestore
+            .collection("users")
+            .doc(res.uid)
+            .set({
+              email: res.email,
+            })
+            .then((res) => console.log("success added user"))
+            .catch((err) => console.log(err));
         })
         .catch((err) => {
           setSignupError(true);
