@@ -7,26 +7,22 @@ import styles from "./RequestList.module.css";
 const RequestList = () => {
   const [requests, setRequests] = useState([]);
 
-  const { user } = useAuth();
-
   useEffect(() => {
-    if (user) {
-      db.collection("requests")
-        .get()
-        .then(function (querySnapshot) {
-          const newList = [];
-          querySnapshot.forEach(function (doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-            newList.push(doc.data());
-          });
-          setRequests(newList);
-        })
-        .catch(function (error) {
-          console.log("Error getting document:", error);
+    db.collection("requests")
+      .get()
+      .then(function (querySnapshot) {
+        const newList = [];
+        querySnapshot.forEach(function (doc) {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, " => ", doc.data());
+          newList.push(doc.data());
         });
-    }
-  }, [user]);
+        setRequests(newList);
+      })
+      .catch(function (error) {
+        console.log("Error getting document:", error);
+      });
+  }, []);
 
   const requestList = requests.map((req, idx) => (
     <div key={idx} className={styles.listContainer}>
