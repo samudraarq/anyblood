@@ -1,11 +1,11 @@
-import Link from "next/link";
+import Link from "../../utils/Link";
 import { useRouter } from "next/router";
 import React from "react";
 
 import { useAuth } from "../../Hooks/use-auth";
 import styles from "./MobileNavLink.module.css";
 
-const MobileNavLink = () => {
+const MobileNavLink = ({ isOpen }) => {
   const router = useRouter();
 
   const { user, signout } = useAuth();
@@ -16,7 +16,7 @@ const MobileNavLink = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${isOpen ? styles.open : null}`}>
       <ul className={styles.nav}>
         <Link href="/requests">
           <li>Request</li>

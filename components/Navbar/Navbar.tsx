@@ -20,7 +20,7 @@ const Navbar = () => {
       >
         <Menu />
       </span>
-      {isOpen && <MobileNavLink />}
+      <MobileNavLink isOpen={isOpen} />
     </div>
   );
 };
