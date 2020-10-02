@@ -5,7 +5,7 @@ import styles from "./Navlogo.module.css";
 const Navlogo = () => {
   return (
     <Link href="/">
-      <span className={styles.logo}>AnyBlood</span>
+      <span className={styles.logo}>AnyDonor</span>
     </Link>
   );
 };
