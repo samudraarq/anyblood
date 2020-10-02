@@ -3,6 +3,7 @@ import { db } from "../../config/fbConfig";
 import { useAuth } from "../Hooks/use-auth";
 import { format } from "date-fns";
 import styles from "./HistoryList.module.css";
+import { Heart } from "react-feather";
 
 const HistoryList = () => {
   const [histories, setHistories] = useState([]);
@@ -40,7 +41,18 @@ const HistoryList = () => {
     </div>
   ));
 
-  return <div>{historiesList}</div>;
+  return (
+    <div>
+      <h2 className={styles.title}>Donor History List</h2>
+      <img
+        src="/image/heart-icon.svg"
+        alt="heartIcon"
+        className={styles.icon}
+      />
+
+      {historiesList}
+    </div>
+  );
 };
 
 export default HistoryList;
