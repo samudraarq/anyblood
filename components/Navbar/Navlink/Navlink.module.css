@@ -14,3 +14,9 @@
 .nav li:hover {
   color: #f95a2c;
 }
+
+@media only screen and (max-width: 600px) {
+  .nav {
+    display: none;
+  }
+}
