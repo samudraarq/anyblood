@@ -18,7 +18,7 @@ const HistoryList = () => {
           if (doc.exists) {
             console.log("Document data:", doc.data());
             const data = doc.data();
-            console.log(data.donate);
+            console.log(data);
             setHistories(data.donate);
           } else {
             // doc.data() will be undefined in this case
@@ -33,8 +33,10 @@ const HistoryList = () => {
 
   const historiesList = histories.map((history, idx) => (
     <div key={idx} className={styles.listContainer}>
-      <p>{history.place}</p>
-      <p>{format(history.date.toDate(), "E, MM/dd/yyyy")}</p>
+      <p className={styles.date}>
+        {format(history.date.toDate(), "E, dd MMMM yyyy")}
+      </p>
+      <p className={styles.place}>At {history.place}</p>
     </div>
   ));
 

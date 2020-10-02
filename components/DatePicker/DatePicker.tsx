@@ -22,6 +22,7 @@ const DatePickerField = (props) => {
       placeholderText="Select a date"
       minDate={new Date()}
       maxDate={addDays(new Date(), 7)}
+      autoComplete="off"
     />
   );
 };
