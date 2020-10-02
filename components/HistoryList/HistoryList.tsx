@@ -31,7 +31,7 @@ const HistoryList = () => {
     }
   }, [user]);
 
-  const historiesList = histories.map((history, idx) => (
+  const historiesList = histories?.map((history, idx) => (
     <div key={idx} className={styles.listContainer}>
       <p className={styles.date}>
         {format(history.date.toDate(), "E, dd MMMM yyyy")}
@@ -48,8 +48,11 @@ const HistoryList = () => {
         alt="heartIcon"
         className={styles.icon}
       />
-
-      {historiesList}
+      {historiesList ? (
+        historiesList
+      ) : (
+        <p className={styles.notfound}>No donation before</p>
+      )}
     </div>
   );
 };

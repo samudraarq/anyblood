@@ -46,7 +46,11 @@ const RequestList = () => {
   return (
     <div>
       <h2 className={styles.title}>Blood Request List</h2>
-      {requestList}
+      {requestList ? (
+        requestList
+      ) : (
+        <p className={styles.notfound}>No requests before</p>
+      )}
     </div>
   );
 };
