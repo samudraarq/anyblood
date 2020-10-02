@@ -4,9 +4,11 @@ import styles from "./Donate.module.css";
 import { db } from "../../config/fbConfig";
 import { useAuth } from "../Hooks/use-auth";
 import firebase from "../../config/fbConfig";
+import { useRouter } from "next/router";
 
 const Donate = () => {
   const { user } = useAuth();
+  const router = useRouter();
 
   const handleSubmit = (e) => {
     const uid = user.uid;
@@ -20,6 +22,7 @@ const Donate = () => {
       .then(function (docRef) {
         // go to success page
         console.log("success");
+        router.push("/donate/success");
       })
       .catch(function (error) {
         // display error

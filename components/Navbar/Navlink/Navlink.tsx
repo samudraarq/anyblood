@@ -1,10 +1,18 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { useAuth } from "../../Hooks/use-auth";
 import Link from "../../utils/Link";
 import styles from "./Navlink.module.css";
 
 const Navlink = () => {
+  const router = useRouter();
+
   const { user, signout } = useAuth();
+
+  const logoutUser = () => {
+    signout();
+    router.push("/");
+  };
 
   return (
     <ul className={styles.nav}>
@@ -16,7 +24,7 @@ const Navlink = () => {
           <Link href="/history">
             <li>History</li>
           </Link>
-          <li onClick={() => signout()}>Logout</li>
+          <li onClick={logoutUser}>Logout</li>
         </>
       )}
       {!user && (
