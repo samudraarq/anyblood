@@ -1,4 +1,5 @@
 import React from "react";
+import DonateSuccess from "../../components/Donate/DonateSuccess/DonateSuccess";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 
@@ -7,7 +8,7 @@ const success = () => {
     <>
       <div className="container">
         <Navbar />
-        This is the Success page
+        <DonateSuccess />
       </div>
       <Footer />
     </>
