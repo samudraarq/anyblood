@@ -1,10 +1,33 @@
 import React from "react";
+import firebase, { db } from "../../config/fbConfig";
 import RequestDonorFormik from "../Formik/RequestDonorFormik";
+import { useAuth } from "../Hooks/use-auth";
 import styles from "./RequestDonor.module.css";
 
 const RequestDonor = () => {
+  const { user } = useAuth();
+
   const handleSubmit = (e) => {
     console.log(e);
+    const newData = {
+      userId: user.uid,
+      userEmail: user.email,
+      ...e,
+      // date: firebase.firestore.Timestamp.now(),
+      date: new Date(),
+    };
+    console.log(newData);
+
+    db.collection("requests")
+      .add({
+        ...newData,
+      })
+      .then(function (docRef) {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch(function (error) {
+        console.error("Error adding document: ", error);
+      });
   };
 
   return (
