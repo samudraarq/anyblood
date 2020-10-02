@@ -31,9 +31,15 @@ const RequestList = () => {
   const requestList = requests.map((req, idx) => (
     <div key={idx} className={styles.listContainer}>
       <p className={styles.date}>
+        for {req.fullname} <span> &#183; </span>
         {format(req.date.toDate(), "E, dd MMMM yyyy")}
       </p>
-      <p className={styles.content}>At {req.place}</p>
+      <p className={styles.content}>
+        Type {req.bloodtype}, {req.place},{" "}
+        {req.bloodbagsamount === 1
+          ? `${req.bloodbagsamount} bag`
+          : `${req.bloodbagsamount} bags`}
+      </p>
     </div>
   ));
 
