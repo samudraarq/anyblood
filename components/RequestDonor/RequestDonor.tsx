@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 import firebase, { db } from "../../config/fbConfig";
 import RequestDonorFormik from "../Formik/RequestDonorFormik";
@@ -6,6 +7,7 @@ import styles from "./RequestDonor.module.css";
 
 const RequestDonor = () => {
   const { user } = useAuth();
+  const route = useRouter();
 
   const handleSubmit = (e) => {
     console.log(e);
@@ -24,6 +26,7 @@ const RequestDonor = () => {
       })
       .then(function (docRef) {
         console.log("Document written with ID: ", docRef.id);
+        route.push("/request/success");
       })
       .catch(function (error) {
         console.error("Error adding document: ", error);
