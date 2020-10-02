@@ -3,32 +3,23 @@ import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { ChevronRight, User } from "react-feather";
 import styles from "./Formik.module.css";
-import DatePicker from "../DatePicker/DatePicker";
 
-const DonateFormik = ({ handleSubmit }) => {
+const RequestDonorFormik = ({ handleSubmit }) => {
   return (
     <Formik
       initialValues={{
         fullname: "",
         age: "",
         bloodtype: "",
-        height: "",
-        weight: "",
-        travelhistory: "",
-        medicationhistory: "",
+        bloodbagsamount: "",
         place: "",
-        date: "",
       }}
       validationSchema={Yup.object({
         fullname: Yup.string().required("Required"),
         age: Yup.number().required("Required"),
         bloodtype: Yup.string().required("Required"),
-        height: Yup.number().required("Required"),
-        weight: Yup.number().required("Required"),
-        travelhistory: Yup.string(),
-        medicationhistory: Yup.string(),
+        bloodbagsamount: Yup.number().required("Required"),
         place: Yup.string().required("Required"),
-        date: Yup.date().required("Required"),
       })}
       onSubmit={(val) => {
         handleSubmit(val);
@@ -82,59 +73,13 @@ const DonateFormik = ({ handleSubmit }) => {
             <User />
           </span>
           <Field
-            name="height"
+            name="bloodbagsamount"
             type="number"
-            placeholder="Height"
+            placeholder="Blood Bags Amount"
             className={styles.input}
           />
         </div>
-        <ErrorMessage name="height">
-          {(msg) => <div className={styles.alert}>{msg}</div>}
-        </ErrorMessage>
-        <div className={styles.inputContainer}>
-          <span className={styles.icon}>
-            <User />
-          </span>
-          <Field
-            name="weight"
-            type="number"
-            placeholder="Weight"
-            className={styles.input}
-          />
-        </div>
-        <ErrorMessage name="weight">
-          {(msg) => <div className={styles.alert}>{msg}</div>}
-        </ErrorMessage>
-        <div className={styles.inputContainer}>
-          <span className={styles.textareaicon}>
-            <User />
-          </span>
-          <Field
-            name="travelhistory"
-            component="textarea"
-            rows="6"
-            cols="40"
-            placeholder="Travel History"
-            className={`${styles.textarea} ${styles.input}`}
-          />
-        </div>
-        <ErrorMessage name="travelhistory">
-          {(msg) => <div className={styles.alert}>{msg}</div>}
-        </ErrorMessage>
-        <div className={styles.inputContainer}>
-          <span className={styles.textareaicon}>
-            <User />
-          </span>
-          <Field
-            name="medicationhistory"
-            component="textarea"
-            rows="6"
-            cols="40"
-            placeholder="Medication History"
-            className={`${styles.textarea} ${styles.input}`}
-          />
-        </div>
-        <ErrorMessage name="medicationhistory">
+        <ErrorMessage name="bloodbagsamount">
           {(msg) => <div className={styles.alert}>{msg}</div>}
         </ErrorMessage>
         <div className={styles.inputContainer}>
@@ -151,15 +96,6 @@ const DonateFormik = ({ handleSubmit }) => {
         <ErrorMessage name="place">
           {(msg) => <div className={styles.alert}>{msg}</div>}
         </ErrorMessage>
-        <div className={styles.inputContainer}>
-          <span className={styles.icon}>
-            <User />
-          </span>
-          <DatePicker name="date" />
-        </div>
-        <ErrorMessage name="date">
-          {(msg) => <div className={styles.alert}>{msg}</div>}
-        </ErrorMessage>
         <button type="submit" className={styles.sendform}>
           <span>Send Form</span>
           <ChevronRight />
@@ -169,4 +105,4 @@ const DonateFormik = ({ handleSubmit }) => {
   );
 };
 
-export default DonateFormik;
+export default RequestDonorFormik;
