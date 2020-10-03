@@ -1,9 +1,8 @@
-import Link from "../../utils/Link";
-import { useRouter } from "next/router";
 import React from "react";
-
-import { useAuth } from "../../Hooks/use-auth";
+import { useRouter } from "next/router";
 import styles from "./MobileNavLink.module.css";
+import Link from "../../utils/Link";
+import { useAuth } from "../../Hooks/use-auth";
 
 const MobileNavLink = ({ isOpen }) => {
   const router = useRouter();
