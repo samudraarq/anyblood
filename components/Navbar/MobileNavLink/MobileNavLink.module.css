@@ -7,7 +7,7 @@
   transform: translateX(100vw);
   z-index: 10;
   background-color: #fff;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .open {
