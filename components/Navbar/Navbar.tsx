@@ -20,21 +20,20 @@ const Navbar = () => {
     }
   }, [width]);
 
+  const toggleNav = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className={styles.navbar}>
       <Navlogo />
       {!isSideBar && <Navlink />}
       {isSideBar && (
         <>
-          <span
-            className={styles.burger}
-            onClick={() => {
-              setIsOpen(!isOpen);
-            }}
-          >
+          <span className={styles.burger} onClick={toggleNav}>
             <Menu />
           </span>
-          <MobileNavLink isOpen={isOpen} />
+          <MobileNavLink isOpen={isOpen} toggleNav={toggleNav} />
         </>
       )}
     </div>

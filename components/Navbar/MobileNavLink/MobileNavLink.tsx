@@ -4,7 +4,7 @@ import styles from "./MobileNav.module.css";
 import Link from "../../utils/Link";
 import { useAuth } from "../../Hooks/use-auth";
 
-const MobileNavLink = ({ isOpen }) => {
+const MobileNavLink = ({ isOpen, toggleNav }) => {
   const router = useRouter();
 
   const { user, signout } = useAuth();
@@ -16,7 +16,7 @@ const MobileNavLink = ({ isOpen }) => {
 
   return (
     <div className={`${styles.navContainer} ${isOpen ? styles.open : null}`}>
-      <ul className={styles.nav}>
+      <ul className={styles.nav} onClick={toggleNav}>
         <Link href="/requests">
           <li>Request</li>
         </Link>
