@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import styles from "./MobileNavLink.module.css";
+import styles from "./MobileNav.module.css";
 import Link from "../../utils/Link";
 import { useAuth } from "../../Hooks/use-auth";
 
