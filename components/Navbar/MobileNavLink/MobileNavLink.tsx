@@ -15,7 +15,7 @@ const MobileNavLink = ({ isOpen }) => {
   };
 
   return (
-    <div className={`navContainer ${isOpen ? "open" : null}`}>
+    <div className={`${styles.navContainer} ${isOpen ? styles.open : null}`}>
       <ul className={styles.nav}>
         <Link href="/requests">
           <li>Request</li>

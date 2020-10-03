@@ -1,3 +1,18 @@
+.navContainer {
+  position: fixed;
+  width: 80%;
+  right: -100%;
+  top: 12.6rem;
+  bottom: 0;
+  z-index: 10;
+  background-color: #fff;
+  transition: all 0.4s ease-in-out;
+}
+
+.open {
+  right: 0;
+}
+
 .nav {
   height: 100%;
   display: flex;

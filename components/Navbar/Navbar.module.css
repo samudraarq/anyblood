@@ -5,6 +5,10 @@
   justify-content: space-between;
 }
 
+.burger {
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 651px) {
   .burger {
     display: none;
