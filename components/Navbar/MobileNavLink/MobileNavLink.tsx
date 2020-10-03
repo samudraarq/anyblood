@@ -15,7 +15,7 @@ const MobileNavLink = ({ isOpen, toggleNav }) => {
   };
 
   return (
-    <div className={`${styles.sideNav} ${isOpen ? styles.open : null}`}>
+    <div className={`sideNav ${isOpen ? styles.open : null}`}>
       <ul className={styles.nav} onClick={toggleNav}>
         <Link href="/requests">
           <li>Request</li>
