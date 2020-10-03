@@ -6,7 +6,6 @@ import styles from "./Navlink.module.css";
 
 const Navlink = () => {
   const router = useRouter();
-
   const { user, signout } = useAuth();
 
   const logoutUser = () => {
