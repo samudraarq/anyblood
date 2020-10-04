@@ -7,7 +7,7 @@ import { useAuth } from "../Hooks/use-auth";
 import firebase from "../../config/fbConfig";
 import { useRouter } from "next/router";
 
-const Donate = ({ res }) => {
+const Donate = () => {
   const [isAbleDonate, setIsAbleDonate] = useState(true);
   const { user } = useAuth();
   const router = useRouter();
@@ -71,15 +71,5 @@ const Donate = ({ res }) => {
     </div>
   );
 };
-
-export async function getStaticProps() {
-  const { user } = useAuth();
-  const res = await db.collection("users").doc(user.uid).get();
-  console.log(res);
-
-  return {
-    props: res,
-  };
-}
 
 export default Donate;
