@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { addDays } from "date-fns";
 import DonateFormik from "../Formik/DonateFormik";
 import styles from "./Donate.module.css";
 import { db } from "../../config/fbConfig";
@@ -13,10 +14,12 @@ const Donate = () => {
   const handleSubmit = (e) => {
     const uid = user.uid;
     const newData = { uid, ...e };
+    const nextBloodDonation = addDays(e.date, 91);
 
     db.collection("users")
       .doc(uid)
       .update({
+        nexBloodDonation: nextBloodDonation,
         donate: firebase.firestore.FieldValue.arrayUnion(newData),
       })
       .then(function (docRef) {
