@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import styles from "./MobileNav.module.css";
+import styles from "./MobileNavLink.module.css";
 import Link from "../../utils/Link";
 import { useAuth } from "../../Hooks/use-auth";
 
@@ -15,7 +15,7 @@ const MobileNavLink = ({ isOpen, toggleNav }) => {
   };
 
   return (
-    <div className={`sideNav ${isOpen ? styles.open : null}`}>
+    <div className={`${styles.sideNav} ${isOpen ? styles.open : null}`}>
       <ul className={styles.nav} onClick={toggleNav}>
         <Link href="/requests">
           <li>Request</li>
