@@ -3,6 +3,7 @@ import { db } from "../../config/fbConfig";
 import { useAuth } from "../Hooks/use-auth";
 import { format } from "date-fns";
 import styles from "./RequestList.module.css";
+import RequestBtn from "./RequestBtn/RequestBtn";
 
 const RequestList = () => {
   const [requests, setRequests] = useState([]);
@@ -42,6 +43,8 @@ const RequestList = () => {
   return (
     <div>
       <h2 className={styles.title}>Blood Request List</h2>
+      <p className={styles.post}>Post a request</p>
+      <RequestBtn />
       {requestList ? (
         requestList
       ) : (

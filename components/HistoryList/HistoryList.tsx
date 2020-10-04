@@ -11,10 +11,12 @@ import {
   isBefore,
 } from "date-fns";
 import styles from "./HistoryList.module.css";
+import DonateBtn from "./DonateBtn/DonateBtn";
 
 const HistoryList = () => {
   const [histories, setHistories] = useState([]);
   const [nextDonation, setNextDonation] = useState("");
+  const [isAbleDonate, setIsAbleDonate] = useState(false);
 
   const { user } = useAuth();
 
@@ -65,11 +67,14 @@ const HistoryList = () => {
         const newDate = addDays(histories[0].date.toDate(), 91);
         if (isBefore(newDate, new Date())) {
           setNextDonation("Get your blood donate");
+          setIsAbleDonate(true);
         } else {
           const distance = formatDistanceToNow(newDate);
           setNextDonation("Your next blood donation will be in " + distance);
         }
       }
+    } else {
+      setIsAbleDonate(true);
     }
   };
 
@@ -86,6 +91,7 @@ const HistoryList = () => {
       ) : (
         <p className={styles.next}>Get your first blood donation</p>
       )}
+      {isAbleDonate && <DonateBtn />}
       {historiesList ? (
         historiesList
       ) : (
