@@ -86,7 +86,6 @@ const HistoryList = () => {
       ) : (
         <p className={styles.next}>Get your first blood donation</p>
       )}
-      <p></p>
       {historiesList ? (
         historiesList
       ) : (
