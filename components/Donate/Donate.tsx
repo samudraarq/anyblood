@@ -44,11 +44,23 @@ const Donate = () => {
       .doc(uid)
       .update({
         nextBloodDonation,
-        donate: firebase.firestore.FieldValue.arrayUnion(newData),
       })
       .then(function (docRef) {
         // go to success page
-        console.log("success");
+        console.log("success change date");
+      })
+      .catch(function (error) {
+        // display error
+        console.log(error);
+      });
+
+    db.collection("users")
+      .doc(uid)
+      .collection("donate")
+      .add(newData)
+      .then(function (docRef) {
+        // go to success page
+        console.log("success add donation");
         router.push("/donate/success");
       })
       .catch(function (error) {

@@ -24,15 +24,15 @@ const HistoryList = () => {
     if (user) {
       db.collection("users")
         .doc(user.uid)
+        .collection("donate")
+        .orderBy("date", "desc")
         .get()
-        .then(function (doc) {
-          if (doc.exists) {
-            const data = doc.data().donate.reverse();
-            setHistories(data);
-          } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-          }
+        .then(function (querySnapshot) {
+          const newList = [];
+          querySnapshot.forEach(function (doc) {
+            newList.push(doc.data());
+          });
+          setHistories(newList);
         })
         .catch(function (error) {
           console.log("Error getting document:", error);
