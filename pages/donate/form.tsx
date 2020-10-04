@@ -1,19 +1,27 @@
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Donate from "../../components/Donate/Donate";
 import Footer from "../../components/Footer/Footer";
 import { useAuth } from "../../components/Hooks/use-auth";
 import Navbar from "../../components/Navbar/Navbar";
+import { auth } from "../../config/fbConfig";
 
 const form = () => {
-  const { user } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (!user) {
-      router.replace("/login");
-    }
+    checkUser();
   }, []);
+
+  const checkUser = () => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        // there is a user
+      } else {
+        router.replace("/login");
+      }
+    });
+  };
 
   return (
     <>
