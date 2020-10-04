@@ -28,6 +28,7 @@ const SignupForm = () => {
             .doc(res.uid)
             .set({
               email: res.email,
+              nextBloodDonation: new Date(),
             })
             .then((res) => console.log("success added user"))
             .catch((err) => console.log(err));

@@ -4,7 +4,6 @@ import DonateFormik from "../Formik/DonateFormik";
 import styles from "./Donate.module.css";
 import { db } from "../../config/fbConfig";
 import { useAuth } from "../Hooks/use-auth";
-import firebase from "../../config/fbConfig";
 import { useRouter } from "next/router";
 
 const Donate = () => {
