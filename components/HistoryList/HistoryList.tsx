@@ -30,7 +30,8 @@ const HistoryList = () => {
         .then(function (querySnapshot) {
           const newList = [];
           querySnapshot.forEach(function (doc) {
-            newList.push(doc.data());
+            const newData = { ...doc.data(), id: doc.id };
+            newList.push(newData);
           });
           setHistories(newList);
         })
@@ -44,8 +45,8 @@ const HistoryList = () => {
     getNextDonation();
   }, [histories]);
 
-  const historiesList = histories?.map((history, idx) => (
-    <div key={idx} className={styles.listContainer}>
+  const historiesList = histories?.map((history) => (
+    <div key={history.id} className={styles.listContainer}>
       <p className={styles.date}>
         {format(history.date.toDate(), "E, dd MMMM yyyy")}
       </p>
@@ -73,8 +74,6 @@ const HistoryList = () => {
           setNextDonation("Your next blood donation will be in " + distance);
         }
       }
-    } else {
-      setIsAbleDonate(true);
     }
   };
 
@@ -89,13 +88,18 @@ const HistoryList = () => {
       {histories.length ? (
         <p className={styles.next}>{nextDonation}</p>
       ) : (
-        <p className={styles.next}>Get your first blood donation</p>
+        <>
+          <p className={styles.next}>Get your first blood donation</p>
+          <DonateBtn />
+        </>
       )}
       {isAbleDonate && <DonateBtn />}
-      {historiesList ? (
+      {historiesList.length ? (
         historiesList
       ) : (
-        <p className={styles.notfound}>No donation before</p>
+        <>
+          <p className={styles.notfound}>No donation before</p>
+        </>
       )}
     </div>
   );
