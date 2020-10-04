@@ -28,22 +28,6 @@ a {
   margin: 0 auto;
 }
 
-.navContainer {
-  position: fixed;
-  width: 80%;
-  right: 0;
-  top: 12.6rem;
-  bottom: 0;
-  transform: translateX(100vw);
-  z-index: 10;
-  background-color: #fff;
-  transition: all 0.4s ease-in-out;
-}
-
-.open {
-  transform: translateX(0);
-}
-
 @media only screen and (max-width: 1100px) {
   html,
   body {
@@ -69,4 +53,27 @@ a {
   body {
     font-size: 37.5%;
   }
+}
+
+/* Date picker CSS  */
+
+.react-datepicker {
+  font-size: 1.3rem !important;
+}
+
+.react-datepicker__current-month {
+  font-size: 1.5rem !important;
+}
+
+.react-datepicker__header {
+  padding-top: 6px !important;
+}
+
+.react-datepicker__navigation {
+  top: 13px !important;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+  margin: 0.5rem !important;
 }
