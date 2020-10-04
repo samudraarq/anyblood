@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { addDays } from "date-fns";
 import DonateFormik from "../Formik/DonateFormik";
 import styles from "./Donate.module.css";
@@ -7,19 +7,43 @@ import { useAuth } from "../Hooks/use-auth";
 import firebase from "../../config/fbConfig";
 import { useRouter } from "next/router";
 
-const Donate = () => {
+const Donate = ({ res }) => {
+  const [isAbleDonate, setIsAbleDonate] = useState(true);
   const { user } = useAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      db.collection("users")
+        .doc(user.uid)
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            const data = doc.data();
+            const nextDate = data.nextBloodDonation.toDate();
+            console.log(nextDate);
+            if (nextDate < new Date()) {
+              setIsAbleDonate(true);
+            } else {
+              setIsAbleDonate(false);
+            }
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+        });
+    }
+  }, [user]);
 
   const handleSubmit = (e) => {
     const uid = user.uid;
     const newData = { uid, ...e };
-    const nextBloodDonation = addDays(e.date, 91);
+    const nextBloodDonation = addDays(e.date, 90);
 
     db.collection("users")
       .doc(uid)
       .update({
-        nexBloodDonation: nextBloodDonation,
+        nextBloodDonation,
         donate: firebase.firestore.FieldValue.arrayUnion(newData),
       })
       .then(function (docRef) {
@@ -37,9 +61,25 @@ const Donate = () => {
     <div className={styles.form}>
       <h2>Donor Form</h2>
       <p>Please fill the form to donate your blood.</p>
-      <DonateFormik handleSubmit={handleSubmit} />
+      {isAbleDonate ? (
+        <DonateFormik handleSubmit={handleSubmit} />
+      ) : (
+        <h3 className={styles.reminder}>
+          You already donate, please wait until your next donation
+        </h3>
+      )}
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const { user } = useAuth();
+  const res = await db.collection("users").doc(user.uid).get();
+  console.log(res);
+
+  return {
+    props: res,
+  };
+}
 
 export default Donate;
