@@ -54,9 +54,8 @@ const RequestList = () => {
       .then(function (querySnapshot) {
         const newList = [];
         querySnapshot.forEach(function (doc) {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
-          newList.push(doc.data());
+          const newData = { ...doc.data(), id: doc.id };
+          newList.push(newData);
         });
         setRequests(newList);
       })
@@ -65,8 +64,8 @@ const RequestList = () => {
       });
   }, []);
 
-  const requestList = requests.map((req, idx) => (
-    <ListContainer key={idx}>
+  const requestList = requests.map((req) => (
+    <ListContainer key={req.id}>
       <Date>
         for {req.fullname} <span> &#183; </span>
         {format(req.date.toDate(), "E, dd MMMM yyyy")}
