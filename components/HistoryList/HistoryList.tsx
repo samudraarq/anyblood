@@ -41,7 +41,7 @@ const Title = styled.h2`
   font-weight: 700;
 `;
 
-const Icon = styled.icon`
+const Icon = styled.span`
   margin-top: 2.4rem;
 `;
 
