@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../../config/fbConfig";
 import { format } from "date-fns";
-import styles from "./RequestList.module.css";
 import RequestBtn from "./RequestBtn/RequestBtn";
 import styled from "styled-components";
 
