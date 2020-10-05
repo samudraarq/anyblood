@@ -1,11 +1,32 @@
 import React from "react";
 import { GitHub, Instagram, Linkedin, Twitter } from "react-feather";
-import styles from "./Footer.module.css";
+import styled from "styled-components";
+
+const StyledFooter = styled.footer`
+  background-color: #e9e7fc;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  & > span {
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin-top: 1.6rem;
+  }
+`;
+
+const Logo = styled.div`
+  & > a {
+    margin: 0 2rem;
+  }
+`;
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.logo}>
+    <StyledFooter>
+      <Logo>
         <a
           href="https://www.linkedin.com/in/samudra-faris-arqam/"
           rel="noopener noreferrer"
@@ -34,9 +55,9 @@ const Footer = () => {
         >
           <Instagram />
         </a>
-      </div>
+      </Logo>
       <span>Samudra@2020</span>
-    </footer>
+    </StyledFooter>
   );
 };
 

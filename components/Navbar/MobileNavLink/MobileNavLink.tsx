@@ -1,8 +1,42 @@
 import React from "react";
 import { useRouter } from "next/router";
-import styles from "./MobileNavLink.module.css";
 import Link from "../../utils/Link";
 import { useAuth } from "../../Hooks/use-auth";
+import styled from "styled-components";
+
+const SideNav = styled.div`
+  position: fixed;
+  width: 80%;
+  right: -100%;
+  top: 12.6rem;
+  bottom: 0;
+  z-index: 10;
+  background-color: #fff;
+  transition: all 0.4s ease-in-out;
+
+  right: ${(props) => props.isOpen && 0};
+`;
+
+const Nav = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & li {
+    font-size: 2.4rem;
+    font-weight: 500;
+    font-family: inherit;
+    list-style: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin-top: 10rem;
+  }
+
+  & li:hover {
+    color: #f95a2c;
+  }
+`;
 
 const MobileNavLink = ({ isOpen, toggleNav }) => {
   const router = useRouter();
@@ -15,8 +49,8 @@ const MobileNavLink = ({ isOpen, toggleNav }) => {
   };
 
   return (
-    <div className={`${styles.sideNav} ${isOpen ? styles.open : null}`}>
-      <ul className={styles.nav} onClick={toggleNav}>
+    <SideNav isOpen={isOpen}>
+      <Nav onClick={toggleNav}>
         <Link href="/requests">
           <li>Request</li>
         </Link>
@@ -41,8 +75,8 @@ const MobileNavLink = ({ isOpen, toggleNav }) => {
         {/* <Link href="/about">
     <li>About</li>
   </Link> */}
-      </ul>
-    </div>
+      </Nav>
+    </SideNav>
   );
 };
 

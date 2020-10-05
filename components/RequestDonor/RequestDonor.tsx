@@ -1,9 +1,26 @@
 import { useRouter } from "next/router";
 import React from "react";
-import firebase, { db } from "../../config/fbConfig";
+import { db } from "../../config/fbConfig";
 import RequestDonorFormik from "../Formik/RequestDonorFormik";
 import { useAuth } from "../Hooks/use-auth";
-import styles from "./RequestDonor.module.css";
+import styled from "styled-components";
+
+const Form = styled.div`
+  max-width: 45rem;
+  margin-bottom: 5rem;
+
+  & > h2 {
+    font-size: 3.6rem;
+    font-weight: 800;
+    margin-bottom: 1.6rem;
+  }
+
+  & > p {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-bottom: 2.4rem;
+  }
+`;
 
 const RequestDonor = () => {
   const { user } = useAuth();
@@ -34,13 +51,11 @@ const RequestDonor = () => {
   };
 
   return (
-    <div>
-      <div className={styles.form}>
-        <h2>Request Form</h2>
-        <p>Please fill the form to request blood from other donor.</p>
-        <RequestDonorFormik handleSubmit={handleSubmit} />
-      </div>
-    </div>
+    <Form>
+      <h2>Request Form</h2>
+      <p>Please fill the form to request blood from other donor.</p>
+      <RequestDonorFormik handleSubmit={handleSubmit} />
+    </Form>
   );
 };
 

@@ -1,13 +1,26 @@
 import React from "react";
-import styles from "./Signin.module.css";
 import SiginForm from "./SigninForm/SigninForm";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70rem;
+
+  @media only screen and (max-width: 750px) {
+    & img {
+      display: none;
+    }
+  }
+`;
 
 const Signin = () => {
   return (
-    <div className={styles.signin}>
+    <Container>
       <img src="/image/signin-people.png" alt="signin-people" />
       <SiginForm />
-    </div>
+    </Container>
   );
 };
 

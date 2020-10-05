@@ -2,7 +2,25 @@ import { useRouter } from "next/router";
 import React from "react";
 import { useAuth } from "../../Hooks/use-auth";
 import Link from "../../utils/Link";
-import styles from "./Navlink.module.css";
+import styled from "styled-components";
+
+const Nav = styled.ul`
+  display: flex;
+
+  & li {
+    margin-left: 3rem;
+    font-family: inherit;
+    font-size: 2.4rem;
+    font-weight: 500;
+    list-style: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  & li:hover {
+    color: #f95a2c;
+  }
+`;
 
 const Navlink = () => {
   const router = useRouter();
@@ -14,7 +32,7 @@ const Navlink = () => {
   };
 
   return (
-    <ul className={styles.nav}>
+    <Nav>
       <Link href="/requests">
         <li>Request</li>
       </Link>
@@ -39,7 +57,7 @@ const Navlink = () => {
       {/* <Link href="/about">
         <li>About</li>
       </Link> */}
-    </ul>
+    </Nav>
   );
 };
 

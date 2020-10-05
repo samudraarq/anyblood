@@ -10,8 +10,46 @@ import {
   isToday,
   isBefore,
 } from "date-fns";
-import styles from "./HistoryList.module.css";
 import DonateBtn from "./DonateBtn/DonateBtn";
+import styled from "styled-components";
+
+const ListContainer = styled.div`
+  width: 52rem;
+  height: 12rem;
+  background-color: #e9e7fc;
+  border: 2px solid #18191f;
+  box-shadow: 0px 2px 0px 0px #18191f;
+  border-radius: 1.6rem;
+  padding: 3.2rem 2.4rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+`;
+
+const StyledDate = styled.p`
+  font-size: 1.2rem;
+  font-weight: 700;
+`;
+
+const StyledPara = styled.p`
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-top: 0.8rem;
+`;
+
+const Title = styled.h2`
+  font-size: 3.6rem;
+  font-weight: 700;
+`;
+
+const Icon = styled.span`
+  margin-top: 2.4rem;
+`;
+
+const NotFound = styled.p`
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-top: 2.4rem;
+`;
 
 const HistoryList = () => {
   const [histories, setHistories] = useState([]);
@@ -46,12 +84,12 @@ const HistoryList = () => {
   }, [histories]);
 
   const historiesList = histories?.map((history) => (
-    <div key={history.id} className={styles.listContainer}>
-      <p className={styles.date}>
+    <ListContainer key={history.id}>
+      <StyledDate>
         {format(history.date.toDate(), "E, dd MMMM yyyy")}
-      </p>
-      <p className={styles.place}>At {history.place}</p>
-    </div>
+      </StyledDate>
+      <StyledPara>At {history.place}</StyledPara>
+    </ListContainer>
   ));
 
   const getNextDonation = () => {
@@ -79,17 +117,13 @@ const HistoryList = () => {
 
   return (
     <div>
-      <h2 className={styles.title}>Donor History List</h2>
-      <img
-        src="/image/heart-icon.svg"
-        alt="heartIcon"
-        className={styles.icon}
-      />
+      <Title>Donor History List</Title>
+      <Icon src="/image/heart-icon.svg" alt="heartIcon" />
       {histories.length ? (
-        <p className={styles.next}>{nextDonation}</p>
+        <StyledPara>{nextDonation}</StyledPara>
       ) : (
         <>
-          <p className={styles.next}>Get your first blood donation</p>
+          <StyledPara>Get your first blood donation</StyledPara>
           <DonateBtn />
         </>
       )}
@@ -97,9 +131,7 @@ const HistoryList = () => {
       {historiesList.length ? (
         historiesList
       ) : (
-        <>
-          <p className={styles.notfound}>No donation before</p>
-        </>
+        <NotFound>No donation before</NotFound>
       )}
     </div>
   );

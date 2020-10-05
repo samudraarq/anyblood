@@ -1,10 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { addDays } from "date-fns";
 import DonateFormik from "../Formik/DonateFormik";
-import styles from "./Donate.module.css";
 import { db } from "../../config/fbConfig";
 import { useAuth } from "../Hooks/use-auth";
 import { useRouter } from "next/router";
+import styled from "styled-components";
+
+const Form = styled.div`
+  max-width: 45rem;
+  margin-bottom: 5rem;
+
+  & > h2 {
+    font-size: 3.6rem;
+    font-weight: 800;
+    margin-bottom: 1.6rem;
+  }
+
+  & > p {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-bottom: 2.4rem;
+  }
+`;
+
+const Reminder = styled.h3`
+  font-size: 2.4rem;
+  font-weight: 500;
+`;
 
 const Donate = () => {
   const [isAbleDonate, setIsAbleDonate] = useState(true);
@@ -69,17 +91,17 @@ const Donate = () => {
   };
 
   return (
-    <div className={styles.form}>
+    <Form>
       <h2>Donor Form</h2>
       <p>Please fill the form to donate your blood.</p>
       {isAbleDonate ? (
         <DonateFormik handleSubmit={handleSubmit} />
       ) : (
-        <h3 className={styles.reminder}>
+        <Reminder>
           You already donate, please wait until your next donation
-        </h3>
+        </Reminder>
       )}
-    </div>
+    </Form>
   );
 };
 

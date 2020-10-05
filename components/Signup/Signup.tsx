@@ -1,13 +1,26 @@
 import React from "react";
 import SignupForm from "./SignupForm/SignupForm";
-import styles from "./Signup.module.css";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70rem;
+
+  @media only screen and (max-width: 750px) {
+    & img {
+      display: none;
+    }
+  }
+`;
 
 const Signup = () => {
   return (
-    <div className={styles.signup}>
+    <Container>
       <img src="/image/signup-people.png" alt="signup-people" />
       <SignupForm />
-    </div>
+    </Container>
   );
 };
 
