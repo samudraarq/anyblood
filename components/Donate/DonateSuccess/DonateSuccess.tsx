@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import styles from "./DonateSuccess.module.css";
 import styled from "styled-components";
 
 const Container = styled.div`
