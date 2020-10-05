@@ -16,7 +16,7 @@ const ListContainer = styled.div`
   margin-bottom: 3rem;
 `;
 
-const Date = styled.p`
+const StyledDate = styled.p`
   font-size: 1.2rem;
   font-weight: 700;
 `;
@@ -65,10 +65,10 @@ const RequestList = () => {
 
   const requestList = requests.map((req) => (
     <ListContainer key={req.id}>
-      <Date>
+      <StyledDate>
         for {req.fullname} <span> &#183; </span>
         {format(req.date.toDate(), "E, dd MMMM yyyy")}
-      </Date>
+      </StyledDate>
       <StyledPara>
         Type {req.bloodtype}, {req.place},{" "}
         {req.bloodbagsamount === 1

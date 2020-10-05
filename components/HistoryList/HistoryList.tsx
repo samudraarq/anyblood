@@ -25,7 +25,7 @@ const ListContainer = styled.div`
   margin-bottom: 3rem;
 `;
 
-const Date = styled.p`
+const StyledDate = styled.p`
   font-size: 1.2rem;
   font-weight: 700;
 `;
@@ -85,7 +85,9 @@ const HistoryList = () => {
 
   const historiesList = histories?.map((history) => (
     <ListContainer key={history.id}>
-      <Date>{format(history.date.toDate(), "E, dd MMMM yyyy")}</Date>
+      <StyledDate>
+        {format(history.date.toDate(), "E, dd MMMM yyyy")}
+      </StyledDate>
       <StyledPara>At {history.place}</StyledPara>
     </ListContainer>
   ));
