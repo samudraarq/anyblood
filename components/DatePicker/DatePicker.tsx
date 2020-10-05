@@ -2,7 +2,6 @@ import React from "react";
 import { useField, useFormikContext } from "formik";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
-import styles from "./DatePicker.module.css";
 import addDays from "date-fns/addDays";
 
 const StyledDatePicker = styled(DatePicker)`
