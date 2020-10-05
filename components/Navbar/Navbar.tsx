@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Menu } from "react-feather";
+import styled from "styled-components";
 import { auth } from "../../config/fbConfig";
 import useWindowSize from "../Hooks/useWindowResize";
 import MobileNavLink from "./MobileNavLink/MobileNavLink";
-import styles from "./Navbar.module.css";
 import Navlink from "./Navlink/Navlink";
 import Navlogo from "./Navlogo/Navlogo";
+
+const StyledNavbar = styled.div`
+  height: 12.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const Burger = styled.span`
+  cursor: pointer;
+`;
 
 const Navbar = () => {
   const [isSideBar, setIsSideBar] = useState(false);
@@ -41,18 +52,18 @@ const Navbar = () => {
   };
 
   return (
-    <div className={styles.navbar}>
+    <StyledNavbar>
       <Navlogo />
       {!isSideBar && hasCheckedUser && <Navlink />}
       {isSideBar && hasCheckedUser && (
         <>
-          <span className={styles.burger} onClick={toggleNav}>
+          <Burger onClick={toggleNav}>
             <Menu />
-          </span>
+          </Burger>
           <MobileNavLink isOpen={isOpen} toggleNav={toggleNav} />
         </>
       )}
-    </div>
+    </StyledNavbar>
   );
 };
 
