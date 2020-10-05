@@ -1,11 +1,18 @@
 import React from "react";
 import Link from "next/link";
-import styles from "./Navlogo.module.css";
+import styled from "styled-components";
+
+const Logo = styled.span`
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 3.6rem;
+  cursor: pointer;
+`;
 
 const Navlogo = () => {
   return (
     <Link href="/">
-      <span className={styles.logo}>AnyDonor</span>
+      <Logo>AnyDonor</Logo>
     </Link>
   );
 };
